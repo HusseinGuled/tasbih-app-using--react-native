@@ -8,7 +8,8 @@ export default function App() {
   const [counter, setCounter] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
 
-  const options = ["استغفر ألله",
+  const options = [
+  "استغفر ألله",
 "سبحان ألله",
 "الحمدلله",
 "ألله اكبر",
