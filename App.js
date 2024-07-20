@@ -9,25 +9,23 @@ export default function App() {
   const [selectedOption, setSelectedOption] = useState('');
 
   const options = [
-  "استغفر ألله",
-"سبحان ألله",
-"الحمدلله",
-"ألله اكبر",
-"لا حول ولا قوة إلا بالله",
-"أللهم صلي وسلم وبارك  علي محمد وعلي أل محمد"
+    "استغفر ألله",
+    "سبحان ألله",
+    "الحمدلله",
+    "ألله اكبر",
+    "لا حول ولا قوة إلا بالله",
+    "أللهم صلي وسلم وبارك  علي محمد وعلي أل محمد"
   ];
 
   const handleOptionChange = (itemValue) => {
     setSelectedOption(itemValue);
     setCounter(0); // Reset counter when a new option is selected
   };
-  const showToast = () => {
-    ToastAndroid.show('A pikachu appeared nearby !', ToastAndroid.SHORT);
-  };
+
   useEffect(() => {
 
     if (counter == 33) {
-      // ToastAndroid.show('A pikachu appeared nearby !', ToastAndroid.SHORT);
+      ToastAndroid.show('Well Done!', ToastAndroid.SHORT);
    }
  })
   return (
