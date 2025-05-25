@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ToastAndroid, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Picker } from '@react-native-picker/picker';
-import Toast from 'react-native-toast-message';
 
 export default function App() {
   const [counter, setCounter] = useState(0);
@@ -31,15 +29,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Counter App</Text>
-      <Picker
-        selectedValue={selectedOption}
-        style={styles.picker}
-        onValueChange={(itemValue) => handleOptionChange(itemValue)}
-      >
-        {options.map((option, index) => (
-          <Picker.Item key={index} label={option} value={option} />
-        ))}
-      </Picker>
+     
       <Text style={styles.counter}>{counter}</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={() => setCounter(counter + 1)}>
@@ -58,7 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'top',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 24,
