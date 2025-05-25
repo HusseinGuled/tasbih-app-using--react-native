@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ToastAndroid, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Picker } from '@react-native-picker/picker';
+import Toast from 'react-native-toast-message'
 
 export default function App() {
   const [counter, setCounter] = useState(0);
@@ -21,15 +23,27 @@ export default function App() {
   };
 
   useEffect(() => {
+    if (counter == 3) {
+      console.log(counter, 'counter is 33333333333')
+      Toast.show({
+  type: 'info',
+  text1: 'This is an info message'
+});
 
-    if (counter == 33) {
-      ToastAndroid.show('Well Done!', ToastAndroid.SHORT);
    }
  })
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Counter App</Text>
-     
+      <Text style={styles.title}>Tasbih App</Text>
+        <Picker
+        selectedValue={selectedOption}
+        style={styles.picker}
+        onValueChange={(itemValue) => handleOptionChange(itemValue)}
+      >
+        {options.map((option, index) => (
+          <Picker.Item key={index} label={option} value={option} />
+        ))}
+      </Picker>
       <Text style={styles.counter}>{counter}</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={() => setCounter(counter + 1)}>
