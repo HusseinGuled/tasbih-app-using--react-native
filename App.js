@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, ToastAndroid, Button } from '
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from '@react-native-picker/picker';
 import Toast from 'react-native-toast-message'
+import { ImageBackground } from 'react-native-web';
 
 export default function App() {
   const [counter, setCounter] = useState(0);
@@ -34,6 +35,10 @@ export default function App() {
  })
   return (
     <View style={styles.container}>
+      <ImageBackground source={require('./assets/')} 
+      >
+
+     
       <Text style={styles.title}>Tasbih App</Text>
         <Picker
         selectedValue={selectedOption}
@@ -53,6 +58,7 @@ export default function App() {
           <Icon name="refresh" size={30} color="#fff" />
         </TouchableOpacity>
       </View>
+      </ImageBackground>
     </View>
   );
 }
