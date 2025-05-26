@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ToastAndroid, Button } from 'react-native';
+import { useState, useEffect } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from '@react-native-picker/picker';
-import Toast from 'react-native-toast-message'
-import { ImageBackground } from 'react-native-web';
+import Toast from 'react-native-toast-message';
 
 export default function App() {
   const [counter, setCounter] = useState(0);
@@ -24,49 +29,65 @@ export default function App() {
   };
 
   useEffect(() => {
-    if (counter == 3) {
-      console.log(counter, 'counter is 33333333333')
+    if (counter === 33) {
       Toast.show({
-  type: 'info',
-  text1: 'This is an info message'
-});
+        type: 'info',
+        text2: 'أحسنتَ🎉',
+        position: 'top'
+      });
+    }
+  }, [counter]);
 
-   }
- })
   return (
-    <View style={styles.container}>
-      <ImageBackground source={require('./assets/')} 
+    <>
+      <ImageBackground
+        source={require('./assets/download (7).png')}
+        resizeMode="cover"
+        style={styles.background}
       >
-
-     
-      <Text style={styles.title}>Tasbih App</Text>
-        <Picker
-        selectedValue={selectedOption}
-        style={styles.picker}
-        onValueChange={(itemValue) => handleOptionChange(itemValue)}
-      >
-        {options.map((option, index) => (
-          <Picker.Item key={index} label={option} value={option} />
-        ))}
-      </Picker>
-      <Text style={styles.counter}>{counter}</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => setCounter(counter + 1)}>
-          <Icon name="plus" size={30} color="#fff" />
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={() => setCounter(0)}>
-          <Icon name="refresh" size={30} color="#fff" />
-        </TouchableOpacity>
-      </View>
+        <View style={styles.overlay}>
+          <View style={styles.container}>
+            <Text style={styles.title}>Do tasbih</Text>
+            <Picker
+              selectedValue={selectedOption}
+              style={styles.picker}
+              onValueChange={(itemValue) => handleOptionChange(itemValue)}
+            >
+              {options.map((option, index) => (
+                <Picker.Item key={index} label={option} value={option} />
+              ))}
+            </Picker>
+            <Text style={styles.counter}>{counter}</Text>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.button} onPress={() => setCounter(counter + 1)}>
+                <Icon name="plus" size={30} color="#fff" />
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={() => setCounter(0)}>
+                <Icon name="refresh" size={30} color="#fff" />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
       </ImageBackground>
-    </View>
+
+      {/* Toast Component - Required to show toasts */}
+      <Toast />
+    </>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)', 
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -74,7 +95,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    textTransform:"uppercase"
+    textTransform: "uppercase"
   },
   picker: {
     height: 30,
@@ -93,12 +114,12 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#007bff',
-    // padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
     marginHorizontal: 10,
+    paddingVertical: 10,
   },
   resetButton: {
     backgroundColor: '#ff0000',
